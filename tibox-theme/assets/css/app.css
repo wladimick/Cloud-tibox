@@ -1,0 +1,165 @@
+:root {
+    --tibox-content: 1200px;
+    --tibox-text: #171717;
+    --tibox-muted: #616161;
+    --tibox-line: #e7e7e7;
+    --tibox-surface: #ffffff;
+    --tibox-soft: #f6f7f8;
+    --tibox-accent: #d71920;
+    --tibox-radius: 18px;
+    --tibox-space: clamp(1rem, 2vw, 2rem);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    margin: 0;
+    color: var(--tibox-text);
+    background: var(--tibox-surface);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.55;
+    text-rendering: optimizeLegibility;
+}
+img { max-width: 100%; height: auto; }
+a { color: inherit; }
+button, input, select, textarea { font: inherit; }
+
+.tibox-container {
+    width: min(calc(100% - 2rem), var(--tibox-content));
+    margin-inline: auto;
+}
+.tibox-main { min-height: 60vh; }
+.tibox-stack > * + * { margin-top: 1rem; }
+.tibox-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--tibox-space);
+}
+.tibox-entry-content { padding-block: clamp(2rem, 5vw, 5rem); }
+.tibox-entry-content > *:first-child { margin-top: 0; }
+
+.tibox-skip-link {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    z-index: 99999;
+    padding: .75rem 1rem;
+    background: #000;
+    color: #fff;
+    transform: translateY(-200%);
+}
+.tibox-skip-link:focus { transform: none; }
+
+.tibox-default-header {
+    border-bottom: 1px solid var(--tibox-line);
+    background: #fff;
+}
+.tibox-default-header__inner {
+    min-height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+.tibox-site-logo { display: block; max-height: 42px; width: auto; }
+.tibox-menu {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin: 0;
+    padding: 0;
+}
+.tibox-menu a { text-decoration: none; }
+
+.tibox-default-footer {
+    margin-top: 4rem;
+    padding-block: 2rem;
+    border-top: 1px solid var(--tibox-line);
+}
+.tibox-default-footer__inner { display: grid; gap: 1.25rem; }
+
+.tibox-page-header,
+.tibox-archive-hero,
+.tibox-catalog-hero {
+    padding-block: clamp(3rem, 8vw, 7rem);
+}
+.tibox-page-header h1,
+.tibox-archive-hero h1,
+.tibox-catalog-hero h1 {
+    margin: 0;
+    font-size: clamp(2.25rem, 6vw, 5rem);
+    line-height: .98;
+    letter-spacing: -.04em;
+}
+.tibox-eyebrow {
+    margin: 0;
+    color: var(--tibox-muted);
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+.tibox-lead { max-width: 760px; font-size: clamp(1.1rem, 2vw, 1.45rem); color: var(--tibox-muted); }
+.tibox-price { font-size: 1.2rem; font-weight: 700; }
+.tibox-badge {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: .35rem .6rem;
+    border-radius: 999px;
+    background: var(--tibox-soft);
+    font-size: .75rem;
+    font-weight: 700;
+}
+.tibox-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: .75rem 1.1rem;
+    border-radius: 999px;
+    background: var(--tibox-text);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+}
+.tibox-button:focus-visible,
+.tibox-text-link:focus-visible,
+.tibox-menu a:focus-visible {
+    outline: 3px solid var(--tibox-accent);
+    outline-offset: 3px;
+}
+
+.tibox-catalog-grid-section { padding-block: 2rem 5rem; }
+.tibox-catalog-card {
+    overflow: hidden;
+    border: 1px solid var(--tibox-line);
+    border-radius: var(--tibox-radius);
+    background: #fff;
+}
+.tibox-catalog-card__media { display: block; aspect-ratio: 16 / 10; background: var(--tibox-soft); }
+.tibox-catalog-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tibox-catalog-card__body { padding: 1.25rem; }
+.tibox-catalog-card__meta { display: flex; justify-content: space-between; align-items: center; gap: .75rem; }
+.tibox-catalog-card h2 { margin: 0; font-size: 1.35rem; }
+.tibox-catalog-card h2 a { text-decoration: none; }
+.tibox-text-link { font-weight: 700; text-underline-offset: .2em; }
+
+.tibox-catalog-hero__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, .8fr);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: center;
+}
+.tibox-catalog-hero__media { margin: 0; overflow: hidden; border-radius: var(--tibox-radius); background: var(--tibox-soft); }
+.tibox-catalog-hero__media img { display: block; width: 100%; }
+
+.tibox-empty-state { padding-block: 8rem; text-align: center; }
+
+@media (max-width: 850px) {
+    .tibox-grid { grid-template-columns: 1fr; }
+    .tibox-catalog-hero__grid { grid-template-columns: 1fr; }
+    .tibox-default-header__inner { align-items: flex-start; flex-direction: column; padding-block: 1rem; }
+    .tibox-menu { flex-direction: column; gap: .6rem; }
+}
