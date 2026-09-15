@@ -13,5 +13,9 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-// Restore branch source placeholder; production package is distributed as ZIP from the project artifact.
-// Full implementation is intentionally maintained in the packaged release until the PR is refreshed.
+final class TIBOX_Design_Tools
+{
+    private const POST_TYPE = 'tibox_design_package';
+    private const OPTION_ASSIGNMENTS = 'tibox_design_assignments';
+    private const STORAGE_DIR = 'tibox-design-packages';
+}
